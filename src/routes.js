@@ -26,7 +26,6 @@ routes.get('/market', MarketController.index);
 routes.post('/market', MarketController.create);
 
 routes.get('/product/:id', ProductsController.index);
-routes.get('/listProduct', ProductsController.indexAll);
 routes.get('/searchProduct', ProductsController.indexSearch);
 routes.post('/product', ProductsController.create);
 

@@ -18,26 +18,13 @@ module.exports= {
         }
     },
 
-    //Lista TODOS os produtos cadastrados
-    async indexAll (request, response) {
-        try {
-            const listProducts = await connection('product')
-            .select('*')
-            .join('nutritionFacts', { 'product.id': 'nutritionFacts.product_id' }, );
-
-            return response.status(200).json(listProducts);
-
-        } catch (error) {
-            const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
-            return response.status(400).json(retorno);
-        }
-    },
-
     async indexSearch (request, response) {
         try {
-            const { name } = request.params;
+            //return response.status(200).json({ok:true});
+            
+            const { name } = request.query;
             const searchProduct = await connection('product')
-            .where('name' , name)
+            .where('product.name', 'like', `%${ name }%`)
             .select('*')
             .join('nutritionFacts', { 'product.id': 'nutritionFacts.product_id' }, );
 
@@ -45,6 +32,7 @@ module.exports= {
 
         } catch (error) {
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
+            console.log(error);
             return response.status(400).json(retorno);
         }
     },
