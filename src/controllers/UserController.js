@@ -4,7 +4,8 @@ const crypto = require('crypto');
 module.exports= {
     async index(request, response) {
         try {
-            const user = await connection('user').select('*');
+            const { email } = request.params;
+            const user = await connection('user').where('email', email).select('*');
             return response.status(200).json(user);
 
         } catch (error) {

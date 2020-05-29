@@ -32,6 +32,22 @@ module.exports= {
             return response.status(400).json(retorno);
         }
     },
+
+    async indexSearch (request, response) {
+        try {
+            const { name } = request.params;
+            const searchProduct = await connection('product')
+            .where('name' , name)
+            .select('*')
+            .join('nutritionFacts', { 'product.id': 'nutritionFacts.product_id' }, );
+
+            return response.status(200).json(searchProduct);
+
+        } catch (error) {
+            const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
+            return response.status(400).json(retorno);
+        }
+    },
     
     //Cria um novo produto
     async create(request, response){
