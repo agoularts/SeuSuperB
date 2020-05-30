@@ -27,6 +27,7 @@ routes.post('/market', MarketController.delete);
 routes.use(authMiddleware)
 
 routes.get('/market', MarketController.index);
+routes.delete('/market/:cnpj', MarketController.delete);
 
 routes.get('/product/:id', ProductsController.index);
 routes.get('/searchProduct', ProductsController.indexSearch);
