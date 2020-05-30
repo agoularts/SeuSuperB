@@ -28,5 +28,29 @@ module.exports= {
         })
     
         return response.json({ name });
+    },
+
+    async delete (request, response){
+        try {
+            const { cnpj } = request.params;
+
+            const market = await connection('market')
+            .where('cnpj', cnpj)
+            .select('cnpj')
+            .first();
+
+            if(market[0].cnpj != cnpj){
+                return response.status(401).json({error: 'Operation not permited' });
+            }
+
+            await connection('market').where('cnpj', cnpj).delete();
+
+            return response.status(204).send();
+
+        } catch (error) {
+            const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
+            return response.status(400).json(retorno);
+        }
+
     }
 }
