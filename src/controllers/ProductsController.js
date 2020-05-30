@@ -20,8 +20,6 @@ module.exports= {
 
     async indexSearch (request, response) {
         try {
-            //return response.status(200).json({ok:true});
-            
             const { name } = request.query;
             const searchProduct = await connection('product')
             .where('product.name', 'like', `%${ name }%`)

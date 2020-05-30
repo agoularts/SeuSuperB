@@ -6,7 +6,7 @@ const app = express(); //var que armazena a aplicação
 
 //informa que o corpo das requisições estão em formato json.
 //Converte o json pra um obj JS
-app.use(cors());
+app.use(cors({origin:"*"}));
 app.use(express.json());
 app.use(routes); 
 
