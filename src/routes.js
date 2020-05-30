@@ -1,6 +1,6 @@
 const express = require('express');
 
-//const authMiddleware = require('./middlewares/authValidate');
+const authMiddleware = require('./middlewares/authValidate');
 
 const ConfigController = require('./controllers/ConfigController');
 const UserController =  require('./controllers/UserController');
@@ -20,7 +20,7 @@ routes.get('/user', UserController.index);
 routes.post('/user', UserController.create);
 
 /*routes.get('/profile', ProfileController.index); */
-//routes.use(authMiddleware)
+routes.use(authMiddleware)
 
 routes.get('/market', MarketController.index);
 routes.post('/market', MarketController.create);
