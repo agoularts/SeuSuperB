@@ -22,7 +22,6 @@ routes.post('/market', MarketController.create);
 routes.post('/product', ProductsController.create);
 routes.post('/nutrition', NutritionFactsController.create);
 routes.post('/recycle', RecycleController.create);
-routes.post('/market', MarketController.delete);
 routes.post('/favorite', FavoriteController.create);
 
 /*routes.get('/profile', ProfileController.index); */

@@ -10,7 +10,6 @@ module.exports= {
             .join('user', 'favorites.user_id', 'user.id')
             .join('product', 'favorites.product_id', 'product.id')
             .select('product.name');
-            console.log(favorites)
             
             return response.status(200).json(favorites); 
               

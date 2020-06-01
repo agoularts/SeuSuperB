@@ -4,7 +4,9 @@ module.exports= {
     async index (request, response) {
         try {
             const { id } = request.params;
-            const recycle = await connection('recycle').where('id' , id).select('*');
+            const recycle = await connection('recycle')
+            .where('id' , id)
+            .select('*');
 
             return response.status(200).json(recycle);
 
