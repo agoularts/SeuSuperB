@@ -15,6 +15,7 @@ module.exports= {
               
         } catch (error) {
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
+            console.log(error)
             return response.status(400).json(retorno);
         }
     },
