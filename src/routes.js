@@ -23,6 +23,8 @@ routes.post('/product', ProductsController.create);
 routes.post('/nutrition', NutritionFactsController.create);
 routes.post('/recycle', RecycleController.create);
 routes.post('/favorite', FavoriteController.create);
+routes.get('/favorite', FavoriteController.index);
+routes.delete('/favorite/:id', FavoriteController.delete);
 
 /*routes.get('/profile', ProfileController.index); */
 routes.use(authMiddleware)
@@ -38,7 +40,6 @@ routes.get('/nutrition', NutritionFactsController.index);
 routes.get('/recycle/:id', RecycleController.index);
 routes.get('/searchRecycle', RecycleController.indexSearch);
 
-routes.get('/favorite', FavoriteController.index);
-routes.delete('/favorite/:id', FavoriteController.delete);
+
 
 module.exports = routes;
