@@ -9,7 +9,7 @@ module.exports= {
             .where('favorites.user_id' , id_usuario)
             .join('user', 'favorites.user_id', 'user.id')
             .join('product', 'favorites.product_id', 'product.id')
-            .select('product.name');
+            .select('favorites.product_id', 'product.id', 'product.name');
             
             return response.status(200).json(favorites); 
               
