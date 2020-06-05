@@ -19,27 +19,40 @@ routes.post('/sessions', SessionController.create);
 
 routes.get('/user', UserController.index);
 routes.post('/user', UserController.create);
-routes.post('/market', MarketController.create);
+routes.put('/updateMarket/:cnpj', MarketController.update);
+routes.put('/updateProduct/:id', ProductsController.update);
+routes.put('/updateNutrition/:product_id', NutritionFactsController.update);
+routes.put('/updateRecycle/:id', RecycleController.update);
 routes.post('/product', ProductsController.create);
 routes.post('/nutrition', NutritionFactsController.create);
+routes.delete('/product/:id', ProductsController.delete);
 routes.post('/recycle', RecycleController.create);
-routes.post('/favorite', FavoriteController.create);
 
 /*routes.get('/profile', ProfileController.index); */
 routes.use(authMiddleware)
 
+routes.post('/market', MarketController.create);
 routes.get('/market', MarketController.index);
+routes.get('/searchMarket/:cnpj', MarketController.indexUpdate);
 routes.delete('/market/:cnpj', MarketController.delete);
 
-routes.get('/product/:id', ProductsController.index);
+routes.get('/productEdit', ProductsController.indexList);
 routes.get('/searchProduct', ProductsController.indexSearch);
+routes.get('/product/:id', ProductsController.index);
+routes.get('/productList/:id', ProductsController.indexUpdate);
+routes.delete('/product/:id', ProductsController.delete);
 
 routes.get('/nutrition', NutritionFactsController.index);
+routes.delete('/nutrition/:product_id', NutritionFactsController.delete);
 
-routes.get('/recycle/:id', RecycleController.index);
+routes.get('/recycle', RecycleController.indexList);
 routes.get('/searchRecycle', RecycleController.indexSearch);
+routes.get('/recycleList/:id', RecycleController.indexUpdate);
+routes.get('/recycle/:id', RecycleController.index);
+routes.delete('/recycle/:id', RecycleController.delete);
 
+routes.post('/favorite', FavoriteController.create);
 routes.get('/favorite', FavoriteController.index);
-routes.delete('/favorite/:id', FavoriteController.delete);
+routes.delete('/favorite/:id', MarketController.delete);
 
 module.exports = routes;
