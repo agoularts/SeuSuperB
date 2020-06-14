@@ -13,7 +13,7 @@ module.exports= {
             return response.status(200).json(favorites); 
               
         } catch (error) {
-            console.log('err', err)
+            console.log('index', error)
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
             return response.status(400).json(retorno);
         }
@@ -29,7 +29,7 @@ module.exports= {
             return response.status(200).json(favorites); 
               
         } catch (error) {
-            console.log('error',error)
+            console.log('create',error)
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
             return response.status(400).json(retorno);
         }
@@ -64,7 +64,7 @@ module.exports= {
                 return response.status(204).send();
 
         } catch (error) {
-            console.log(error)
+            console.log('del', error)
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
             return response.status(400).json(retorno);
         }
