@@ -29,7 +29,7 @@ routes.delete('/product/:id', ProductsController.delete);
 routes.post('/recycle', RecycleController.create);
 
 /*routes.get('/profile', ProfileController.index); */
-routes.use(authMiddleware)
+//routes.use(authMiddleware)
 
 routes.post('/market', MarketController.create);
 routes.get('/market', MarketController.index);
