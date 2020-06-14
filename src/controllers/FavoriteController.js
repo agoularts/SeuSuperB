@@ -10,10 +10,10 @@ module.exports= {
             .join('product', 'favorites.product_id', 'product.id')
             .select('product.name');
 
-            console.log(favorites)
             return response.status(200).json(favorites); 
               
         } catch (error) {
+            console.log('err', err)
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
             return response.status(400).json(retorno);
         }
@@ -29,6 +29,7 @@ module.exports= {
             return response.status(200).json(favorites); 
               
         } catch (error) {
+            console.log('error',error)
             const retorno = [{success: 0, msg: 'Ocorreu algum erro na API'}]
             return response.status(400).json(retorno);
         }
